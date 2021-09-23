@@ -32,3 +32,14 @@ void add_error(unsigned int line)
 	fprintf(stderr, "L%u: can't add, stack too short\n", line);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * sub_error - print error message if the stack is empty.
+ * @line: line.
+ * Return: void.
+ */
+void sub_error(unsigned int line)
+{
+	fprintf(stderr, "L%u: can't sub, stack too short\n", line);
+	exit(EXIT_FAILURE);
+}

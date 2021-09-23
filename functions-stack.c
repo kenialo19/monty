@@ -165,6 +165,25 @@ void add(stack_t **stack, unsigned int line_number)
 }
 
 /**
+ * sub - Function that adds the top two elements of the stack
+ * @stack: element at the top of the stack (head)
+ * @line_number: constant int value in the structure
+ * Return: void
+ **/
+void sub(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+	/*stack_t *tmp_2 = (*stack)->prev;*/
+
+	if (tmp == NULL || (*stack)->prev == NULL)
+		sub_error(line_number);
+
+	/*tmp_2->n = tmp->n + tmp_2->n;*/
+	(tmp->prev)->n = (tmp->prev)->n - tmp->n;
+	pop(stack, line_number);
+}
+
+/**
  * nop - Doesnt do anything
  * @stack: element at the top of the stack (head)
  * @line_number: constant int value in the structure
