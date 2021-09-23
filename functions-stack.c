@@ -154,12 +154,13 @@ void swap(stack_t **stack, unsigned int line_number)
 void add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
-	stack_t *tmp_2 = (*stack)->prev;
+	/*stack_t *tmp_2 = (*stack)->prev;*/
 
-	if (tmp == NULL || tmp_2 == NULL)
+	if (tmp == NULL || (*stack)->prev == NULL)
 		add_error(line_number);
 
-	tmp_2->n = tmp->n + tmp_2->n;
+	/*tmp_2->n = tmp->n + tmp_2->n;*/
+	(tmp->prev)->n = tmp->n + (tmp->prev)->n;
 	pop(stack, line_number);
 }
 
