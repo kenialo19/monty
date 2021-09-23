@@ -1,8 +1,7 @@
 #include "monty.h"
-int number;
 
 /**
- * op_read_file - Function that open, read and execute.
+ * op_re_file - Function that open, read and execute.
  * @argv: arguments
  * Return: void
  **/
@@ -14,7 +13,7 @@ void op_re_file(char **argv)
 	size_t len = 0;
 	int line = 1;
 	stack_t *stack = NULL;
-	void (*f)(stack_t * *stack, unsigned int line_number);
+	void (*f)(stack_t **stack, unsigned int line_number);
 
 	fd = fopen(argv[1], "r");
 	if (fd == NULL)
@@ -47,7 +46,7 @@ void push(stack_t **stack, unsigned int line_number)
 	if (new_node == NULL)
 		malloc_error();
 
-	new_node->n = number;
+	new_node->n = glb_number;
 	new_node->next = NULL;
 	new_node->prev = NULL;
 

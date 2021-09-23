@@ -1,5 +1,4 @@
 #include "monty.h"
-int number;
 
 /**
  * get_op_code - tydt
@@ -15,7 +14,7 @@ void (*get_op_code(char *token, unsigned int line))(stack_t **, unsigned int)
 	tokens = tokenizer(token, "\n\t\r ");
 
 	if (tokens[1])
-		number = atoi(tokens[1]);
+		glb_number = atoi(tokens[1]);
 
 	for (i = 0; list[i].opcode != NULL; i++)
 	{
@@ -82,7 +81,8 @@ int count_words(char *str)
 
 	while (*str)
 	{
-		if (*str == ' ' || *str == '\n' || *str == '\t' || *str == ':' || *str == '=')
+		if (*str == ' ' || *str == '\n' || *str == '\t' ||
+			*str == ':' || *str == '=')
 			state = OUT;
 
 		else if (state == OUT)
@@ -94,7 +94,11 @@ int count_words(char *str)
 	}
 	return (wc);
 }
-
+/**
+ * frees -  frees a dlistint_t list.
+ * @stack: pointer to a pointer to the head of a list.
+ * Return: void
+ */
 void frees(stack_t **stack)
 {
 	stack_t *fre;

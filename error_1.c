@@ -35,7 +35,6 @@ void malloc_error(void)
 /**
  * invalid_instrution - print message if le to open the
  * filehas an invalid instruction
- * @invalid_instrution: instruction
  * Return: void
  **/
 void invalid_instrution(void)
