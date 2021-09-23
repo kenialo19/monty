@@ -13,7 +13,7 @@ void op_re_file(char **argv)
 	size_t len = 0;
 	int line = 1;
 	stack_t *stack = NULL;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	void (*f)(stack_t * *stack, unsigned int line_number);
 
 	fd = fopen(argv[1], "r");
 	if (fd == NULL)
@@ -154,12 +154,10 @@ void swap(stack_t **stack, unsigned int line_number)
 void add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
-	/*stack_t *tmp_2 = (*stack)->prev;*/
 
 	if (tmp == NULL || (*stack)->prev == NULL)
 		add_error(line_number);
 
-	/*tmp_2->n = tmp->n + tmp_2->n;*/
 	(tmp->prev)->n = tmp->n + (tmp->prev)->n;
 	pop(stack, line_number);
 }
@@ -173,12 +171,10 @@ void add(stack_t **stack, unsigned int line_number)
 void sub(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tmp = *stack;
-	/*stack_t *tmp_2 = (*stack)->prev;*/
 
-	if (tmp == NULL || (*stack)->prev == NULL)
+	if (*stack == NULL || (*stack)->prev == NULL)
 		sub_error(line_number);
 
-	/*tmp_2->n = tmp->n + tmp_2->n;*/
 	(tmp->prev)->n = (tmp->prev)->n - tmp->n;
 	pop(stack, line_number);
 }
@@ -191,7 +187,6 @@ void sub(stack_t **stack, unsigned int line_number)
  **/
 void nop(stack_t **stack, unsigned int line_number)
 {
-	printf("Use NOP\n");
 	(void)stack;
 	(void)line_number;
 }
