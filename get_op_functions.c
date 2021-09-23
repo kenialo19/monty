@@ -12,7 +12,8 @@ void (*get_op_code(char *token, unsigned int line))(stack_t **, unsigned int)
 	char **tokens = NULL;
 
 	tokens = tokenizer(token, "\n\t\r ");
-
+			if (token == NULL || int_number(token) == -1)
+				int_error(line);
 	if (tokens[1])
 		glb_number = atoi(tokens[1]);
 
@@ -121,4 +122,23 @@ void int_error(int line)
 {
 	fprintf(stderr, "L%u: usage: push integer\n", line);
 	exit(EXIT_FAILURE);
+}
+/**
+ * int_number - check if string received is int or not
+ * @tokens: string to check
+ * Return: -1 if sring is not int or 1 if yes
+ */
+int int_number(char *tokens)
+{
+	int i;
+
+	if (tokens == NULL)
+		return (-1);
+
+	for (i = 0; tokens[i] != '\0'; i++)
+	{
+		if (tokens[i] != '-' && isdigit(tokens[i]) == 0)
+			return (-1);
+	}
+	return (1);
 }

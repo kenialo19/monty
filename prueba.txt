@@ -1,0 +1,5 @@
+push as
+push 50
+push 50
+pall
+path 12

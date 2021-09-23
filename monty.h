@@ -66,6 +66,7 @@ void sub_error(unsigned int line);
 void div_error(unsigned int line);
 void mul_error(unsigned int line);
 void mod_error(unsigned int line);
+int int_number(char *token);
 
 void (*get_op_code(char *token, unsigned int line))(stack_t **, unsigned int);
 
