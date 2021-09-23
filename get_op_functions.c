@@ -8,13 +8,22 @@
  */
 void (*get_op_code(char *token, unsigned int line))(stack_t **, unsigned int)
 {
-	int i = 0;
+	int i = 0, j = 0;
 	char **tokens = NULL;
 
 	tokens = tokenizer(token, "\n\t\r ");
 
 	if (tokens[1])
+	{
+		for (j = 0; tokens[1][j]; j++)
+		{
+			if (tokens[1][j] >= 48 && tokens[1][j] <= 57)
+				continue;
+			else
+				int_error(line);
+		}
 		glb_number = atoi(tokens[1]);
+	}
 
 	for (i = 0; list[i].opcode != NULL; i++)
 	{
@@ -25,7 +34,6 @@ void (*get_op_code(char *token, unsigned int line))(stack_t **, unsigned int)
 		}
 	}
 
-	(void)line;
 	return (NULL);
 }
 
@@ -46,7 +54,7 @@ char **tokenizer(char *s, char *delim)
 	splited_words = malloc(sizeof(char *) * (cword + 1));
 	if (splited_words == NULL)
 	{
-		perror("Error");
+		malloc_error();
 		return (NULL);
 	}
 
@@ -54,6 +62,7 @@ char **tokenizer(char *s, char *delim)
 
 	if (splited_words[0] == NULL)
 	{
+		malloc_error();
 		free(splited_words[0]);
 		free(splited_words);
 		return (NULL);
@@ -110,4 +119,15 @@ void frees(stack_t **stack)
 		(*stack) = fre->prev;
 		free(fre);
 	}
+}
+
+/**
+ * int_error - print message if parameter receivedis not integer
+ * @line: line
+ * Return: void
+ */
+void int_error(int line)
+{
+	fprintf(stderr, "L%u: usage: push integer\n", line);
+	exit(EXIT_FAILURE);
 }

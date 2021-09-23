@@ -52,6 +52,7 @@ void open_error(char **argv);
 void malloc_error(void);
 void error_argv(void);
 void frees(stack_t **stack);
+void int_error(int line);
 
 void (*get_op_code(char *token, unsigned int line))(stack_t **, unsigned int);
 

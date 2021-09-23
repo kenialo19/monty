@@ -1,0 +1,11 @@
+psh
+pus
+pallp
+paal
+intt
+pin
+po
+op
+wap
+ad
+no
