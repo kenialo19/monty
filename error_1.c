@@ -31,3 +31,25 @@ void malloc_error(void)
 	fprintf(stderr, "Error: malloc failed\n");
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * invalid_instrution - print message if le to open the
+ * filehas an invalid instruction
+ * @invalid_instrution: instruction
+ * Return: void
+ **/
+void invalid_instrution(void)
+{
+	fprintf(stderr, "L<line_number>: unknown instruction <opcode>\n");
+	exit(EXIT_FAILURE);
+}
+/**
+ * pop_error - print error message if the stack is empty
+ * @line: line
+ * Return: void
+ */
+void pop_error(unsigned int line)
+{
+	fprintf(stderr, "L%u: can't pop an empty stack\n", line);
+	exit(EXIT_FAILURE);
+}
