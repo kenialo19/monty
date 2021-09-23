@@ -133,8 +133,15 @@ void pop(stack_t **stack, unsigned int line_number)
  **/
 void swap(stack_t **stack, unsigned int line_number)
 {
-	printf("Use SWAP\n");
-	(void)stack;
+	int i;
+
+	if (*stack == NULL || (*stack)->prev == NULL)
+		swap_error(line_number);
+
+	i = (*stack)->n;
+	(*stack)->n = (*stack)->prev->n;
+	(*stack)->prev->n = i;
+
 	(void)line_number;
 }
 
@@ -146,9 +153,15 @@ void swap(stack_t **stack, unsigned int line_number)
  **/
 void add(stack_t **stack, unsigned int line_number)
 {
-	printf("Use ADD\n");
-	(void)stack;
-	(void)line_number;
+	stack_t *tmp = *stack;
+	stack_t *tmp_2 = (*stack)->prev;
+
+	if (tmp == NULL || tmp_2 == NULL)
+		add_error(line_number);
+
+	printf("%d\n", tmp->n + tmp_2->n);
+	pop(stack, line_number);
+	pop(stack, line_number);
 }
 
 /**

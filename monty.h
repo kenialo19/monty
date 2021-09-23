@@ -48,7 +48,7 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
-void invalid_instrution(int line, char* opcode);
+void invalid_instrution(int line, char *opcode);
 void open_error(char **argv);
 void malloc_error(void);
 void error_argv(void);
@@ -56,6 +56,8 @@ void frees(stack_t **stack);
 void int_error(int line);
 void pint_error(unsigned int line);
 void pop_error(unsigned int line);
+void swap_error(unsigned int line);
+void add_error(unsigned int line);
 
 void (*get_op_code(char *token, unsigned int line))(stack_t **, unsigned int);
 
