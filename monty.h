@@ -50,6 +50,7 @@ void add(stack_t **stack, unsigned int line_number);
 void sub(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void invalid_instrution(int line, char *opcode);
 void open_error(char **argv);
@@ -64,6 +65,7 @@ void add_error(unsigned int line);
 void sub_error(unsigned int line);
 void div_error(unsigned int line);
 void mul_error(unsigned int line);
+void mod_error(unsigned int line);
 
 void (*get_op_code(char *token, unsigned int line))(stack_t **, unsigned int);
 
@@ -83,6 +85,7 @@ static const instruction_t list[] = {
 	{"sub", sub},
 	{"div", _div},
 	{"mul", mul},
+	{"mod", mod},
 	{"nop", nop},
 	{NULL, NULL}};
 

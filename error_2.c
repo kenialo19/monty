@@ -65,3 +65,14 @@ void div_error(unsigned int line)
 	fprintf(stderr, "L%u: can't div, stack too short\n", line);
 	exit(EXIT_FAILURE);
 }
+
+/**
+ * mod_error - print error message if the stack is empty.
+ * @line: line.
+ * Return: void.
+ */
+void mod_error(unsigned int line)
+{
+	fprintf(stderr, "L%u: can't mod, stack too short\n", line);
+	exit(EXIT_FAILURE);
+}
