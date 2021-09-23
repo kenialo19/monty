@@ -8,7 +8,7 @@
  */
 void (*get_op_code(char *token, unsigned int line))(stack_t **, unsigned int)
 {
-	int i = 0, j = 0;
+	int i = 0;
 	char **tokens = NULL;
 
 	tokens = tokenizer(token, "\n\t\r ");
@@ -24,7 +24,7 @@ void (*get_op_code(char *token, unsigned int line))(stack_t **, unsigned int)
 			return (list[i].f);
 		}
 	}
-
+	(void)line;
 	return (NULL);
 }
 
