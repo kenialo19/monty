@@ -14,16 +14,7 @@ void (*get_op_code(char *token, unsigned int line))(stack_t **, unsigned int)
 	tokens = tokenizer(token, "\n\t\r ");
 
 	if (tokens[1])
-	{
-		for (j = 0; tokens[1][j]; j++)
-		{
-			if (tokens[1][j] >= 48 && tokens[1][j] <= 57)
-				continue;
-			else
-				int_error(line);
-		}
 		glb_number = atoi(tokens[1]);
-	}
 
 	for (i = 0; list[i].opcode != NULL; i++)
 	{
