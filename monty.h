@@ -43,6 +43,7 @@ char **tokenizer(char *s, char *delim);
 int count_words(char *str);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
@@ -53,6 +54,8 @@ void malloc_error(void);
 void error_argv(void);
 void frees(stack_t **stack);
 void int_error(int line);
+void pint_error(unsigned int line);
+void pop_error(unsigned int line);
 
 void (*get_op_code(char *token, unsigned int line))(stack_t **, unsigned int);
 
@@ -65,6 +68,7 @@ void (*get_op_code(char *token, unsigned int line))(stack_t **, unsigned int);
 static const instruction_t list[] = {
 	{"push", push},
 	{"pall", pall},
+	{"pint", pint},
 	{"pop", pop},
 	{"swap", swap},
 	{"add", add},

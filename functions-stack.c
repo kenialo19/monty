@@ -85,6 +85,23 @@ void pall(stack_t **stack, unsigned int line_number)
 		tmp = tmp->prev;
 	}
 }
+/**
+ * pint -  prints the value at the top of the stack
+ * @stack: element at the top of the stack (head)
+ * @line_number: constant int value in the structure
+ * Return: void
+ **/
+
+void pint(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+
+	(void)line_number;
+	if (tmp != NULL)
+		printf("%d\n", tmp->n);
+	else
+		pint_error(line_number);
+}
 
 /**
  * pop - Function that pop (delete) the value at top of stack
@@ -94,8 +111,18 @@ void pall(stack_t **stack, unsigned int line_number)
  **/
 void pop(stack_t **stack, unsigned int line_number)
 {
-	printf("Use POP\n");
-	(void)stack;
+	stack_t *tmp = *stack;
+
+	if (*stack == NULL)
+		pop_error(line_number);
+
+	*stack = (*stack)->prev;
+
+	if ((*stack) != NULL)
+		(*stack)->next = NULL;
+
+	free(tmp);
+
 	(void)line_number;
 }
 /**
