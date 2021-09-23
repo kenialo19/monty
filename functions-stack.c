@@ -24,8 +24,12 @@ void op_re_file(char **argv)
 	for (line = 1; getline(&buf, &len, fd) != -1; line++)
 	{
 		f = get_op_code(buf, line);
-		f(&stack, line);
+		if (f == NULL)
+			invalid_instrution(line, strtok(buf, " "));
+		else
+			f(&stack, line);
 	}
+
 	fclose(fd);
 	free(buf);
 	frees(&stack);

@@ -11,6 +11,5 @@ int main(int argc, char **argv)
 		error_argv();
 
 	op_re_file(argv);
-	/** invalid_instrution(); **/
 	return (0);
 }

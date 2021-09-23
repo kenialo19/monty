@@ -35,11 +35,13 @@ void malloc_error(void)
 /**
  * invalid_instrution - print message if le to open the
  * filehas an invalid instruction
+ * @line: line of file
+ * @opcode: command to execute.
  * Return: void
  **/
-void invalid_instrution(void)
+void invalid_instrution(int line, char *opcode)
 {
-	fprintf(stderr, "L<line_number>: unknown instruction <opcode>\n");
+	fprintf(stderr, "L%d: unknown instruction %s\n", line, opcode);
 	exit(EXIT_FAILURE);
 }
 /**

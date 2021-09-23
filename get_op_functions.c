@@ -24,6 +24,7 @@ void (*get_op_code(char *token, unsigned int line))(stack_t **, unsigned int)
 			return (list[i].f);
 		}
 	}
+
 	(void)line;
 	return (NULL);
 }
