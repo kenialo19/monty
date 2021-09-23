@@ -180,6 +180,45 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
+ * mul - Function that adds the top two elements of the stack
+ * @stack: element at the top of the stack (head)
+ * @line_number: constant int value in the structure
+ * Return: void
+ **/
+void mul(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+
+	if (*stack == NULL || (*stack)->prev == NULL)
+		mul_error(line_number);
+
+	(tmp->prev)->n = (tmp->prev)->n * tmp->n;
+	pop(stack, line_number);
+}
+
+/**
+ * sub - Function that adds the top two elements of the stack
+ * @stack: element at the top of the stack (head)
+ * @line_number: constant int value in the structure
+ * Return: void
+ **/
+void _div(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp = *stack;
+
+	if (*stack == NULL || (*stack)->prev == NULL)
+		div_error(line_number);
+
+	if (tmp->n == 0)
+	{
+		fprintf(stderr, "L%u: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	tmp->prev->n = tmp->prev->n / tmp->n;
+	pop(stack, line_number);
+}
+
+/**
  * nop - Doesnt do anything
  * @stack: element at the top of the stack (head)
  * @line_number: constant int value in the structure
